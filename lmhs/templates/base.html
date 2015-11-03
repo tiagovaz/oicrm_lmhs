@@ -1,0 +1,126 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Laboratoire musique, histoire et société (LMHS)</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="{% static 'theme2/css/bootstrap.min.css' %}" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="{% static 'theme2/css/styles.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'theme2/js/chosen/chosen.css' %}" type="text/css" media="screen" />
+	</head>
+	<body>
+
+<header class="navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">LMHS</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">Nouveau registre</a>
+        </li>
+        <li>
+          <a href="#">Resercher</a>
+        </li>
+        <li>
+          <a href="#">Admin</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Begin Body -->
+<div class="container">
+	<div class="row">
+  			<div class="col-sm-3" id="leftCol">
+              	
+<div id="MainMenu">
+  <div class="list-group panel">
+	<h3>Centre de documentation</h3>
+      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Livre et périodique<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu1">
+        <a href="/new?f=Livre&l=Livre" class="list-group-item" data-parent="#SubMenu1">Livre</a>
+        <a href="/new?f=ExtraiteLivre&l=extraite de livre" class="list-group-item" data-parent="#SubMenu1">Extraite de livre</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu1">Périodique</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu1">Article de périodique</a>
+      </div>
+      <a href="#SubMenu2" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu2">Autre document écrit<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu2">
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Conférence</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Programme</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Catalogue</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Concours</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Non publié</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu2">Partition</a>
+      </div>
+      <a href="#SubMenu3" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu3">Autre document<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu3">
+        <a href="#" class="list-group-item" data-parent="#SubMenu3">Matériel audiovisuel</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu3">Affiche</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu3">Iconographie</a>
+      </div>
+	<h3>Projets spéciaux</h3>
+      <a href="#SubMenu4" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu4">Article de périodique<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu4">
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">Albéric Magnard</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">Ballets français</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">E. musiciens</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">Modern Music</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">Musiques anciennes</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">M. art et religion</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">Périodiques français</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu4">N. médias et jazz</a>
+      </div>
+      <a href="#SubMenu5" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu5">Iconographie<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu5">
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">Albéric Magnard</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">Ballets français</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">E. musiciens</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">Modern Music</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">Musiques anciennes</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">M. art et religion</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">Périodiques français</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu5">N. médias et jazz</a>
+      </div>
+  </div>
+</div>
+
+      		</div>  
+      		<div class="col-sm-9">
+
+        {% block content %}
+
+        {% endblock %}
+              	
+      		</div> 
+  	</div>
+</div>
+
+<br />
+
+
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="{% static 'theme2/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'theme2/js/scripts.js' %}"></script>
+		<script type="text/javascript" src="{% static 'theme2/js/chosen/chosen.jquery.min.js' %}"></script>
+		<script type="text/javascript">  $(".chosen").chosen();</script>
+
+	</body>
+</html>
