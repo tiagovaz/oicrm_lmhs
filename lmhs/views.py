@@ -58,7 +58,7 @@ class InsertPrincipal(View):
 #	new_form = eval(request.POST.get('formClass'))
 	livreForm = Livre(request.POST)
         if livreForm.is_valid():
-            print livreForm
+            # TODO: save auteur string to auteur_old field
             livreForm.save()
             return HttpResponseRedirect('/new/?f=Livre&l=Livre')
         else:
