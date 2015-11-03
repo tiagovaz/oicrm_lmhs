@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="page-header">Recherche
+                </h1>
+		{% load crispy_forms_tags %}
+		{% crispy form %}
+            </div>
+        </div>
+        <!-- /.row -->
+
+{% endblock %}

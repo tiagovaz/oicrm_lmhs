@@ -4,23 +4,37 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render_to_response
 from django.views.generic import View
+from django_tables2   import RequestConfig
+from models import Principal
+from tables import PrincipalTable
+
 from forms import *
 
 import re
 
 from django.db.models import Q
 
-class SimpleSearchForm(View):
+class SearchForm(View):
     def get(self, request):
-        simple_search_form = SimpleSearch()
-        return render(request, 'simple_search.html', {'form': simple_search_form})
+        search_form = Search()
+        return render(request, 'search.html', {'form': search_form})
 
     def post(self, request):
         pass
 
-class Gallery(View):
+class Result(View):
     def get(self, request):
-        return render(request, 'gallery.html')
+        pass
+
+    def post(self, request):
+        return render(request, 'result.html')
+
+class AllData(View):
+    def get(self, request):
+        data = Principal.objects.all()
+        data_table = PrincipalTable(data)
+        data_table.paginate(page=request.GET.get('page', 1), per_page=25)
+        return render_to_response('all.html', {'table': data_table}, context_instance=RequestContext(request))
 
     def post(self, request):
         pass
@@ -51,8 +65,6 @@ class InsertPrincipal(View):
             messages.error(request, "Error")
 
         return render_to_response("new.html", {"form": livreForm}, context_instance=RequestContext(request))
-
-
 
 class InsertAuteur(View):
     def get(self, request):

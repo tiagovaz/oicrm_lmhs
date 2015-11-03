@@ -42,13 +42,13 @@ class FormBase(forms.ModelForm):
 class Livre(FormBase):
     helper = FormHelper()
     helper.form_method = 'post'
-    helper.form_action = '/insert_principal/'
+    helper.form_action = '/submit_data/'
     helper.add_input(Submit('submit', 'Enregistrer'))
 
     helper.layout = Layout(
 		# used to commit the obj save
-#		Field('formClass', type='hidden', value='Livre'),
-		Field('type', type='hidden', value='Livre'),
+		Field('formClass', type='hidden', value='Livre'),
+		Field('type', type='hidden', value='livre'),
 		Div(
 			Div( 'cote_prefixe', css_class='col-sm-2' ),
 			Div( 'cote_auteur', css_class='col-sm-2'),
@@ -173,3 +173,28 @@ class ExtraiteLivre(FormBase):
     class Meta:
         model = Principal
 	fields = '__all__'
+
+class Search(FormBase):
+    def __init__(self, *args, **kwargs):
+        super(FormBase, self).__init__(*args, **kwargs)
+
+    helper = FormHelper()
+    helper.form_method = 'post'
+    helper.form_action = '/result/'
+    helper.add_input(Submit('submit', 'Enregistrer'))
+
+    helper.layout = Layout(
+                Div(
+                        Div( 'titre', css_class='col-sm-12'),
+                        css_class='row'
+                ),
+                Div(
+                        Div( Field('auteur', css_class='chosen'), css_class='col-sm-12'),
+                        css_class='row'
+                ),
+    )
+
+    class Meta:
+        model = Principal
+        fields = '__all__'
+
