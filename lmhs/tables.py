@@ -8,6 +8,10 @@ class PrincipalTable(tables.Table):
     date = tables.Column(verbose_name='Date')
     titre = tables.Column(accessor='titre', verbose_name='Titre')
     auteur = tables.Column(accessor='auteur_old', verbose_name='Auteur(es)')
+    edit = tables.LinkColumn('item_edit', args=[A('pk')], orderable=False, empty_values=())
+
+    def render_edit(self):
+        return 'Edit'
 
 #    def render_auteur(self, record):
 #        if record.auteur.exists():
