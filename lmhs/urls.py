@@ -13,8 +13,11 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)), # admin site
     url(r'^result/', SearchResult.as_view()),
     url(r'^search/', SearchForm.as_view()),
-    url(r'^new/', login_required(NewForm.as_view())),
-    url(r'^data/', login_required(AllData.as_view())),
-    url(r'^submit_data/', login_required(InsertPrincipal.as_view())),
+#    url(r'^new/', login_required(NewForm.as_view())),
+#    url(r'^data/', login_required(AllData.as_view())),
+#    url(r'^submit_data/', login_required(InsertPrincipal.as_view())),
+    url(r'^new/', NewForm.as_view()),
+#    url(r'^data/', AllData.as_view()),
+    url(r'^submit_data/', InsertPrincipal.as_view()),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
