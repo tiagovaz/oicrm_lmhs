@@ -34,7 +34,8 @@ class AllData(View):
         data = Principal.objects.all()
         data_table = PrincipalTable(data)
         data_table.paginate(page=request.GET.get('page', 1), per_page=25)
-        return render_to_response('all.html', {'table': data_table}, context_instance=RequestContext(request))
+        RequestConfig(request).configure(data_table)
+        return render(request, 'all.html', {'table': data_table})
 
     def post(self, request):
         pass
