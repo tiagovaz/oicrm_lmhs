@@ -5,10 +5,11 @@ from django_tables2.utils import A  # alias for Accessor
 class PrincipalTable(tables.Table):
     # using auteur_old to list old system records while it's not migrated to a proper m2m...
 #    auteur = tables.Column(accessor='auteur', verbose_name='Auteurs')
-    date = tables.Column(verbose_name='Date')
-    titre = tables.Column(accessor='titre', verbose_name='Titre')
+    cote = tables.Column(accessor='cote_calcul', verbose_name='Cote')
     auteur = tables.Column(accessor='auteur_old', verbose_name='Auteur(es)')
-    edit = tables.LinkColumn('item_edit', args=[A('pk')], orderable=False, empty_values=())
+    titre = tables.Column(accessor='titre', verbose_name='Titre')
+    date = tables.Column(verbose_name='Date')
+#    edit = tables.LinkColumn('item_edit', args=[A('pk')], orderable=False, empty_values=())
 
     def render_edit(self):
         return 'Edit'
@@ -23,5 +24,5 @@ class PrincipalTable(tables.Table):
         model = Principal
         #debug:
         #fields = ('id', 'cote_prefixe', 'cote_auteur', 'cote_numero', 'cote_annee', 'titre', 'date')
-        fields = ('titre', 'date')
+        fields = ('cote', 'titre', 'type', 'support', 'date')
         attrs = {"class": "paleblue"}

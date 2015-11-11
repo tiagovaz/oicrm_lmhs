@@ -22,12 +22,18 @@ class SearchForm(View):
     def post(self, request):
         pass
 
-class Result(View):
+class SearchResult(View):
     def get(self, request):
-        pass
+        titre = request.GET['titre']
+        auteur = request.GET['auteur']
+        projet= request.GET['projet']
+        type = request.GET['type']
 
-    def post(self, request):
-        return render(request, 'result.html')
+        data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type)
+        data_table = PrincipalTable(data)
+        data_table.paginate(page=request.GET.get('page', 1), per_page=25)
+        RequestConfig(request).configure(data_table)
+        return render(request, 'all.html', {'table': data_table})
 
 class AllData(View):
     def get(self, request):
