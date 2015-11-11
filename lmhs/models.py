@@ -38,7 +38,7 @@ class Principal(models.Model):
     annee_production = models.IntegerField(max_length=4, blank=True, null=True)
     cote_calcul_url = models.TextField(blank=True, null=True)
     auteur = models.ManyToManyField('Auteur')
-    auteur_old = models.CharField(max_length=100)
+    auteur_old = models.CharField(blank=True, null=True, max_length=100)
     cote_per_calcul = models.TextField(blank=True)
     collection = models.CharField(blank=True, max_length=50)
     tousindex_calcul = models.TextField(db_column='tousIndex_calcul', blank=True, null=True)  # Field name made lowercase.
@@ -78,7 +78,7 @@ class Principal(models.Model):
     no_volume = models.CharField(blank=True, max_length=20)
     nom_org = models.TextField(blank=True)
     organisme = models.TextField(blank=True, null=True)
-    projet = models.CharField(blank=True, max_length=20)
+    projet = models.CharField(blank=True, null=True, max_length=200)
     source = models.CharField(blank=True, max_length=200)
     source_per = models.CharField(blank=True, max_length=200)
     source_per_calcul = models.TextField(blank=True, null=True)

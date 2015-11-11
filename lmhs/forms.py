@@ -29,13 +29,13 @@ class CommonLayoutLivre(forms.ModelForm, Layout):
         #self.fields['cote_prefixe'] = forms.ChoiceField(choices=set([(f.cote_prefixe, f.cote_prefixe) for f in Principal.objects.all()]))
         prefixe_list = [ "A", "ART", "CAT", "CONC", "CONF", "DNP", "EXT", "ICO", "L", "MA", "MUS", "PER", "PROG", "REF" ]
         type_list = [ "Affiche", "Annonce de concours", "Article de périodique", "Catalogue", "Conférence", "Document non publié", "Extrait de livre", "Iconographie", "Livre", "Matériel audiovisuel", "Partition", "Périodique", "Photographie", "Programme", "Référence" ]
-        type_evenement_liste = [ "Concert | calendrier mensuel", "Concert | concert unique", "Concert | festival", "Concert | plusieurs représentations", "Concert | saison", "Concert | série de concerts", "Colloque", "Conférence", "Divers", "Émission radiophonique", "Événement mixte", "Exposition", "Interview", "Journée d'étude" ]
-        support_list = [ "En ligne", "Cassette", "CD", "CD-Rom", "DVD", "DVD-Rom", "Papier" ]
-        projet_list = [ "Anthologie d'articles de presse sur Albéric Magnard", "Ballets français (1917-1939)", "Enquêtes et entrevues avec des musiciens", "Esthétique musicale en France (1900-1950)", "Modern Music", "Musiques anciennes", "Musique d’avant-garde dans les périodiques français (1880-1902)", "Nouveaux médias et jazz", "Programmes de la Société musicale indépendante", "Sociologie de la musique au Québec" ]
+        type_evenement_liste = [ "", "Concert | calendrier mensuel", "Concert | concert unique", "Concert | festival", "Concert | plusieurs représentations", "Concert | saison", "Concert | série de concerts", "Colloque", "Conférence", "Divers", "Émission radiophonique", "Événement mixte", "Exposition", "Interview", "Journée d'étude" ]
+        support_list = [ "", "En ligne", "Cassette", "CD", "CD-Rom", "DVD", "DVD-Rom", "Papier" ]
+        projet_list = [ "", "Anthologie d'articles de presse sur Albéric Magnard", "Ballets français (1917-1939)", "Enquêtes et entrevues avec des musiciens", "Esthétique musicale en France (1900-1950)", "Modern Music", "Musiques anciennes", "Musique d’avant-garde dans les périodiques français (1880-1902)", "Nouveaux médias et jazz", "Programmes de la Société musicale indépendante", "Sociologie de la musique au Québec" ]
 
         self.fields['cote_prefixe'] = forms.ChoiceField(choices=set([(i, i) for i in prefixe_list]))
-        self.fields['support'] = forms.ChoiceField(choices=set([(i, i) for i in support_list]))
-        self.fields['projet'] = forms.ChoiceField(choices=set([(i, i) for i in projet_list]))
+        self.fields['support'] = forms.ChoiceField(choices=sorted(set([(i, i) for i in support_list])), required=False)
+        self.fields['projet'] = forms.ChoiceField(choices=sorted(set([(i, i) for i in projet_list])), required=False)
 
         self.fields['type'].label = False
         self.fields['cote_prefixe'].label = "Cote (prefixe)"
