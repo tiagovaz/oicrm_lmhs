@@ -9,6 +9,9 @@
             <div class="col-sm-12">
                 <h1 class="page-header">Support(s) disponible(s)</h1>
 
+                <center>
+                <p><a href="{{request.META.HTTP_REFERER}}">Retour aux résultats</a> | <a href="/search">Nouvelle recherche</a></p>
+                </center>
 
                 {% for i in records %}
                         <div class="col-lg-12">
@@ -74,11 +77,11 @@
                                     {% if i.localisation %}
                                         <p><b>Localisation :</b> {{ i.localisation }}</p>
                                     {% endif %}
-                                    {% if i.cal_support_enligne %}
-                                        <p><b>Support(s) en ligne(s) :</b> <a href="http://oicrm.org/wp-content/rechercheBDlmhs/PDF/public/{{ i.cote_calcul_url }}.pdf"><img style="width:40px; height: 40px;" src="{% static 'image/pdf-icon.png' %}"></a></p>
-                                    {% endif %}
                                     {% if i.support %}
                                         <p><b>Autre(s) support(s)</b> {{ i.support }}</p>
+                                    {% endif %}
+                                    {% if i.cal_support_enligne %}
+                                        <p><b>Support(s) en ligne(s) :</b> <a href="http://oicrm.org/wp-content/rechercheBDlmhs/PDF/public/{{ i.cote_calcul_url }}.pdf"><img style="width:30px; height: 30px;" src="{% static 'image/pdf-icon.png' %}"></a></p>
                                     {% endif %}
                                     {% if i.collection %}
                                         <p><b>Collection :</b> {{ i.collection }}</p>
@@ -91,7 +94,6 @@
                         </div>
                 {% endfor %}
 
-                <p><a href="{{request.META.HTTP_REFERER}}">Retour aux résultats</a></p>
 
             </div>
         </div>
