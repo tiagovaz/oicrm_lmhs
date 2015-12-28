@@ -28,8 +28,9 @@ class SearchResult(View):
         auteur = request.GET['auteur']
         projet= request.GET['projet']
         type = request.GET['type']
+        tousindex_calcul = request.GET['tousIndex_calcul']
 
-        data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type)
+        data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type).filter(tousindex_calcul__icontains=tousindex_calcul)
         data_table = PrincipalTable(data)
         data_table.paginate(page=request.GET.get('page', 1), per_page=25)
         RequestConfig(request).configure(data_table)

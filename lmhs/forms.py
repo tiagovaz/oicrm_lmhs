@@ -13,12 +13,15 @@ class Search(forms.Form):
     titre = forms.CharField(label="Titre")
     projet_list = [ "", "Anthologie d'articles de presse sur Albéric Magnard", "Ballets français (1917-1939)", "Enquêtes et entrevues avec des musiciens", "Esthétique musicale en France (1900-1950)", "Modern Music", "Musiques anciennes", "Musique d’avant-garde dans les périodiques français (1880-1902)", "Nouveaux médias et jazz", "Programmes de la Société musicale indépendante", "Sociologie de la musique au Québec" ]
     type_list = [ "", "Affiche", "Annonce de concours", "Article de périodique", "Catalogue", "Conférence", "Document non publié", "Extrait de livre", "Iconographie", "Livre", "Matériel audiovisuel", "Partition", "Périodique", "Photographie", "Programme", "Référence" ]
+    tousIndex_calcul = forms.CharField(label="Tous les index")
     projet = forms.ChoiceField(choices=sorted(set([(i, i) for i in projet_list])))
     type = forms.ChoiceField(choices=sorted(set([(i, i) for i in type_list])))
     helper = FormHelper()
     helper.form_method = 'GET'
     helper.form_action = '/result/'
     helper.add_input(Submit('submit', 'Chercher'))
+
+#######################################################################
 
 class CommonLayoutLivre(forms.ModelForm, Layout):
     def __init__(self, *args, **kwargs):
