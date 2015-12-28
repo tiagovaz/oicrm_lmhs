@@ -7,14 +7,61 @@
         <!-- Page Header -->
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="page-header">Support(s) disponible(s)
-                </h1>
+                <h1 class="page-header">Support(s) disponible(s)</h1>
+
 
                 {% for i in records %}
-                    <p>{{ i.titre }}</p>
-                    <p>{{ i.auteur_old }}</p>
-                    <p>{{ i.type }}</p>
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p><b>Cote :</b> {{ i.cote_calcul }}</p>
+                                    <p><b>Titre :</b> {{ i.titre }}</p>
+                                    <p><b>Auteur :</b> {{ i.auteur_old }}</p>
+                                    {% if i.lieu %}
+                                        <p><b>Date :</b> {{ i.date }}</p>
+                                    {% endif %}
+                                    {% if i.lieu %}
+                                        <p><b>Lieu :</b> {{ i.lieu }}</p>
+                                    {% endif %}
+                                    {% if i.maison_edition %}
+                                        <p><b>Maison d'édition :</b> {{ i.maison_edition }}</p>
+                                    {% endif %}
+                                    {% if i.source %}
+                                        <p><b>Source :</b> {{ i.source }}</p>
+                                    {% endif %}
+                                    {% if i.projet %}
+                                        <p><b>Projet :</b> {{ i.projet }}</p>
+                                    {% endif %}
+                                    {% if i.nb_page %}
+                                        <p><b>Nombre de page :</b> {{ i.nb_page }}</p>
+                                    {% endif %}
+                                    {% if i.no_page %}
+                                        <p><b>Numéro(s) de page :</b> {{ i.no_page }}</p>
+                                    {% endif %}
+                                    {% if i.instrumentation %}
+                                        <p><b>Instrumentation :</b> {{ i.instrumentation }}</p>
+                                    {% endif %}
+                                    {% if i.type %}
+                                        <p><b>Type de document :</b> {{ i.type }}</p>
+                                    {% endif %}
+                                    {% if i.cal_support_enligne %}
+                                        <p><b>Support(s) en ligne(s) :</b> {{ i.cal_support_enligne }}</p>
+                                    {% endif %}
+                                    {% if i.support %}
+                                        <p><b>Autre(s) support(s)</b> {{ i.support }}</p>
+                                    {% endif %}
+                                    {% if i.collection %}
+                                        <p><b>Collection :</b> {{ i.collection }}</p>
+                                    {% endif %}
+                                    {% if i.nb_exemplaire %}
+                                        <p><b>Nombre d'exemplaire :</b> {{ i.nb_exemplaire }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                 {% endfor %}
+
+                <p><a href="{{request.META.HTTP_REFERER}}">Retour aux résultats</a></p>
 
             </div>
         </div>

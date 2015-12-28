@@ -34,7 +34,7 @@ class Principal(models.Model):
     annee_1re_publication = models.IntegerField(max_length=4, blank=True, null=True)
     notice_id = models.TextField(db_column='notice_ID', blank=True, null=True)  # Field name made lowercase.
     annee_enregistrement = models.IntegerField(max_length=4, blank=True, null=True)
-    cote_calcul = models.TextField(blank=True, null=True)
+    cote_calcul = models.TextField(blank=True, null=True, verbose_name="Cote")
     annee_production = models.IntegerField(max_length=4, blank=True, null=True)
     cote_calcul_url = models.TextField(blank=True, null=True)
     auteur = models.ManyToManyField('Auteur')

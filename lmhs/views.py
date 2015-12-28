@@ -7,6 +7,7 @@ from django.views.generic import View
 from django_tables2   import RequestConfig
 from models import Principal
 from tables import PrincipalTable
+from django.core import serializers
 
 from forms import *
 
@@ -43,6 +44,7 @@ class Details(View):
     def get(self, request):
         title = request.GET['title']
         data = Principal.objects.filter(titre__icontains=title)
+#        data = serializers.serialize( "python", Principal.objects.filter(titre__icontains=title), fields=('cote_calcul', 'titre','type', 'auteur_old'))
         return render(request, 'details.html', {'records': data})
 
 class AllData(View):
