@@ -17,8 +17,14 @@
                                     <p><b>Cote :</b> {{ i.cote_calcul }}</p>
                                     <p><b>Titre :</b> {{ i.titre }}</p>
                                     <p><b>Auteur :</b> {{ i.auteur_old }}</p>
-                                    {% if i.lieu %}
+                                    {% if i.date %}
                                         <p><b>Date :</b> {{ i.date }}</p>
+                                    {% endif %}
+                                    {% if i.annee_enregistrement %}
+                                        <p><b>Année d'enregistrement :</b> {{ i.annee_enregistrement }}</p>
+                                    {% endif %}
+                                    {% if i.interprete %}
+                                        <p><b>Interprète(s) :</b> {{ i.interprete }}</p>
                                     {% endif %}
                                     {% if i.lieu %}
                                         <p><b>Lieu :</b> {{ i.lieu }}</p>
@@ -26,8 +32,29 @@
                                     {% if i.maison_edition %}
                                         <p><b>Maison d'édition :</b> {{ i.maison_edition }}</p>
                                     {% endif %}
+                                    {% if i.no_page %}
+                                        <p><b>Numéro(s) de page :</b> {{ i.no_page }}</p>
+                                    {% endif %}
                                     {% if i.source %}
                                         <p><b>Source :</b> {{ i.source }}</p>
+                                    {% endif %}
+                                    {% if i.genre %}
+                                        <p><b>Genre :</b> {{ i.genre }}</p>
+                                    {% endif %}
+                                    {% if i.sujet %}
+                                        <p><b>Sujet :</b> {{ i.sujet }}</p>
+                                    {% endif %}
+                                    {% if i.medium %}
+                                        <p><b>Médium :</b> {{ i.medium }}</p>
+                                    {% endif %}
+                                    {% if i.methode_reproduction %}
+                                        <p><b>Méthode de reproduction :</b> {{ i.methode_reproduction }}</p>
+                                    {% endif %}
+                                    {% if i.commentaire %}
+                                        <p><b>Commentaire :</b> {{ i.commentaire }}</p>
+                                    {% endif %}
+                                    {% if i.mot_cle %}
+                                        <p><b>Mot(s) clé(s) :</b> {{ i.mot_cle }}</p>
                                     {% endif %}
                                     {% if i.projet %}
                                         <p><b>Projet :</b> {{ i.projet }}</p>
@@ -35,17 +62,20 @@
                                     {% if i.nb_page %}
                                         <p><b>Nombre de page :</b> {{ i.nb_page }}</p>
                                     {% endif %}
-                                    {% if i.no_page %}
-                                        <p><b>Numéro(s) de page :</b> {{ i.no_page }}</p>
-                                    {% endif %}
                                     {% if i.instrumentation %}
                                         <p><b>Instrumentation :</b> {{ i.instrumentation }}</p>
+                                    {% endif %}
+                                    {% if i.fonds %}
+                                        <p><b>Fonds :</b> {{ i.fonds }}</p>
                                     {% endif %}
                                     {% if i.type %}
                                         <p><b>Type de document :</b> {{ i.type }}</p>
                                     {% endif %}
+                                    {% if i.localisation %}
+                                        <p><b>Localisation :</b> {{ i.localisation }}</p>
+                                    {% endif %}
                                     {% if i.cal_support_enligne %}
-                                        <p><b>Support(s) en ligne(s) :</b> {{ i.cal_support_enligne }}</p>
+                                        <p><b>Support(s) en ligne(s) :</b> <a href="http://oicrm.org/wp-content/rechercheBDlmhs/PDF/public/{{ i.cote_calcul_url }}.pdf"><img style="width:40px; height: 40px;" src="{% static 'image/pdf-icon.png' %}"></a></p>
                                     {% endif %}
                                     {% if i.support %}
                                         <p><b>Autre(s) support(s)</b> {{ i.support }}</p>
