@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="page-header">Support(s) disponible(s)
+                </h1>
+
+                {% for i in records %}
+                    <p>{{ i.titre }}</p>
+                    <p>{{ i.auteur_old }}</p>
+                    <p>{{ i.type }}</p>
+                {% endfor %}
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+{% endblock %}

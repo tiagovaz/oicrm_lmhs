@@ -32,9 +32,18 @@ class SearchResult(View):
 
         data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type).filter(tousindex_calcul__icontains=tousindex_calcul)
         data_table = PrincipalTable(data)
+
         data_table.paginate(page=request.GET.get('page', 1), per_page=25)
+
         RequestConfig(request).configure(data_table)
+
         return render(request, 'all.html', {'table': data_table})
+
+class Details(View):
+    def get(self, request):
+        title = request.GET['title']
+        data = Principal.objects.filter(titre__icontains=title)
+        return render(request, 'details.html', {'records': data})
 
 class AllData(View):
     def get(self, request):
