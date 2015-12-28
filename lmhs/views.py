@@ -42,8 +42,8 @@ class SearchResult(View):
 
 class Details(View):
     def get(self, request):
-        title = request.GET['title']
-        data = Principal.objects.filter(titre__icontains=title)
+        notice_id = request.GET['notice_id']
+        data = Principal.objects.filter(notice_id__icontains=notice_id)
 #        data = serializers.serialize( "python", Principal.objects.filter(titre__icontains=title), fields=('cote_calcul', 'titre','type', 'auteur_old'))
         return render(request, 'details.html', {'records': data})
 
