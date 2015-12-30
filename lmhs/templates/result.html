@@ -7,29 +7,42 @@
         <!-- Page Header -->
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="page-header">Notice | Banque de données du LMHS</h1>
-
                 <center>
+                <h1 class="page-header">Résultats | Banque de données du LMHS</h1>
                 <p><a href="/search">Nouvelle recherche</a></p>
                 </center>
-                {% bootstrap_paginate items %}
                 {% for i in items %}
                         <div class="col-lg-12">
                             <div class="panel panel-default">
+                                <div class="panel-heading"><b>{{ forloop.counter }}. {{ i.titre }}</b></div>
                                 <div class="panel-body">
-                                    <p><b>Cote :</b> {{ i.cote_calcul }}</p>
-                                    <p><b>Titre :</b> {{ i.titre }}</p>
-                                    <p><b>Auteur :</b> {{ i.auteur_old }}</p>
-                                    {% if i.date %}
-                                        <p><b>Date :</b> {{ i.date }}</p>
+                                    <center>
+                                    {% if i.type == "Article de périodique" or i.type == "Livre" %}
+                                        {{ i.auteur_old }}</br>
+                                        {% if i.date %}
+                                            {{ i.date }}</br>
+                                        {% endif %}
                                     {% endif %}
+
+                                    {% if i.type == "Iconographie" %}
+                                        {{ i.sujet }}</br>
+                                        {{ i.genre }}</br>
+                                        {{ i.auteur_old }}</br>
+                                        {% if i.date %}
+                                            {{ i.date }}</br>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    </center>
+                                    <p class="text-right">Support(s) disponible(s) : <a href="/details?notice_id={{ i.notice_id }}">Consulter la liste</a></p>
                                 </div>
                             </div>
                         </div>
                 {% endfor %}
-
-
             </div>
+                <center>
+                    {% bootstrap_paginate items range=10 show_prev_next="false" show_first_last="true" %}
+                </center>
         </div>
         <!-- /.row -->
 
