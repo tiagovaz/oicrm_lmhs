@@ -1,3 +1,4 @@
+ # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
@@ -8,6 +9,8 @@ from django_tables2   import RequestConfig
 from models import Principal
 from tables import PrincipalTable
 from django.core import serializers
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from forms import *
 
@@ -27,18 +30,32 @@ class SearchResult(View):
     def get(self, request):
         titre = request.GET['titre']
         auteur = request.GET['auteur']
-        projet= request.GET['projet']
+        projet = request.GET['projet']
         type = request.GET['type']
         tousindex_calcul = request.GET['tousIndex_calcul']
 
         data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type).filter(tousindex_calcul__icontains=tousindex_calcul)
-        data_table = PrincipalTable(data)
 
-        data_table.paginate(page=request.GET.get('page', 1), per_page=25)
+        paginator = Paginator(data, 25)
+        page = request.GET.get('page')
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            items = paginator.page(1)
+        except EmptyPage:
+            items = paginator.page(paginator.num_pages)
+        return render(request, 'result.html', {'items': items})
 
-        RequestConfig(request).configure(data_table)
-
-        return render(request, 'all.html', {'table': data_table})
+##### USING TABLES 2 #######
+#        data_table = PrincipalTable(data, empty_text="Aucune notice trouvée.")
+#
+#        data_table.paginate(page=request.GET.get('page', 1), per_page=25)
+#
+#        RequestConfig(request).configure(data_table)
+#
+#############################
+#        return render(request, 'all.html', {'table': data_table})
 
 class Details(View):
     def get(self, request):
