@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'lmhs.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)), # admin site
     url(r'^result/', SearchResult.as_view()),
     url(r'^search/', SearchForm.as_view()),

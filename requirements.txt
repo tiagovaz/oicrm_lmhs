@@ -1,4 +1,10 @@
-django==1.7
-django-grappelli==2.6.5
+django>=1.9.5
 django-crispy-forms
 django-pagination
+django-bootstrap-pagination
+django-bootstrap3
+django-tables2
+MySQL-python
+django-extensions
+django-suit
+django-autocomplete-light
