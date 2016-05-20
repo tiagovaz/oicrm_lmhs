@@ -9,11 +9,11 @@ from models import *
 
 
 class Search(forms.ModelForm, Layout):
+    date = forms.CharField(label="Date")
     auteur = forms.CharField(label="Auteur")
     titre = forms.CharField(label="Titre du document")
-    titre_periodique = forms.CharField(label="Titre du périodique")
     recherche_pdf = forms.CharField(label="Recherche plein text")
-    mot_cles = forms.CharField(label="Mot-clé")
+    mot_cle = forms.CharField(label="Mot-clé")
     projet_list = [ "", "Anthologie d'articles de presse sur Albéric Magnard", "Ballets français (1917-1939)", "Enquêtes et entrevues avec des musiciens", "Esthétique musicale en France (1900-1950)", "Modern Music", "Musiques anciennes", "Musique d’avant-garde dans les périodiques français (1880-1902)", "Nouveaux médias et jazz", "Programmes de la Société musicale indépendante", "Sociologie de la musique au Québec" ]
     type_list = [ "", "Affiche", "Annonce de concours", "Article de périodique", "Catalogue", "Conférence", "Document non publié", "Extrait de livre", "Iconographie", "Livre", "Matériel audiovisuel", "Partition", "Périodique", "Photographie", "Programme", "Référence" ]
     tousIndex_calcul = forms.CharField(label="Tous les index")
@@ -42,12 +42,8 @@ class Search(forms.ModelForm, Layout):
                     css_class='row'
             ),
             Div(
-                    Div( 'titre_periodique', css_class='col-sm-6'),
+                    Div( 'mot_cle', css_class='col-sm-6'),
                     Div( 'type', css_class='col-sm-6'),
-                    css_class='row'
-            ),
-            Div(
-                    Div( 'mot_cles', css_class='col-sm-6'),
                     css_class='row'
             ),
     )
