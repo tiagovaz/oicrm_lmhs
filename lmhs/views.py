@@ -32,9 +32,11 @@ class SearchResult(View):
         auteur = request.GET['auteur']
         projet = request.GET['projet']
         type = request.GET['type']
+        date = request.GET['date']
+        mot_cle = request.GET.get('mot_cle', '')
         tousindex_calcul = request.GET['tousIndex_calcul']
 
-        data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type).filter(tousindex_calcul__icontains=tousindex_calcul)
+        data = Principal.objects.filter(titre__icontains=titre).filter(auteur_old__icontains=auteur).filter(projet__icontains=projet, type__icontains=type).filter(tousindex_calcul__icontains=tousindex_calcul).filter(date__icontains=date).filter(mot_cle__icontains=mot_cle)
 
         paginator = Paginator(data, 25)
         page = request.GET.get('page')

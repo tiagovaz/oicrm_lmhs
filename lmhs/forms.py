@@ -8,9 +8,12 @@ from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, HTML, Fi
 from models import *
 
 
-class Search(forms.Form):
+class Search(forms.ModelForm, Layout):
+    date = forms.CharField(label="Date")
     auteur = forms.CharField(label="Auteur")
-    titre = forms.CharField(label="Titre")
+    titre = forms.CharField(label="Titre du document")
+    recherche_pdf = forms.CharField(label="Recherche plein text")
+    mot_cle = forms.CharField(label="Mot-clé")
     projet_list = [ "", "Anthologie d'articles de presse sur Albéric Magnard", "Ballets français (1917-1939)", "Enquêtes et entrevues avec des musiciens", "Esthétique musicale en France (1900-1950)", "Modern Music", "Musiques anciennes", "Musique d’avant-garde dans les périodiques français (1880-1902)", "Nouveaux médias et jazz", "Programmes de la Société musicale indépendante", "Sociologie de la musique au Québec" ]
     type_list = [ "", "Affiche", "Annonce de concours", "Article de périodique", "Catalogue", "Conférence", "Document non publié", "Extrait de livre", "Iconographie", "Livre", "Matériel audiovisuel", "Partition", "Périodique", "Photographie", "Programme", "Référence" ]
     tousIndex_calcul = forms.CharField(label="Tous les index")
@@ -20,6 +23,34 @@ class Search(forms.Form):
     helper.form_method = 'GET'
     helper.form_action = '/result/'
     helper.add_input(Submit('submit', 'Chercher'))
+
+    helper.layout = Layout (
+            Div(
+                    Div( 'auteur', css_class='col-sm-6'),
+                    Div( 'recherche_pdf', css_class='col-sm-6'),
+                    css_class='row'
+            ),
+            Div(
+
+                    Div( 'titre', css_class='col-sm-6'),
+                    Div( 'tousIndex_calcul', css_class='col-sm-6'),
+                    css_class='row'
+            ),
+            Div(
+                    Div( 'date', css_class='col-sm-6'),
+                    Div( 'projet', css_class='col-sm-6'),
+                    css_class='row'
+            ),
+            Div(
+                    Div( 'mot_cle', css_class='col-sm-6'),
+                    Div( 'type', css_class='col-sm-6'),
+                    css_class='row'
+            ),
+    )
+
+    class Meta:
+        model = Principal
+        fields = '__all__'
 
 #######################################################################
 
@@ -58,7 +89,7 @@ class CommonLayoutLivre(forms.ModelForm, Layout):
         self.fields['nb_page'].label = "Nombre de page"
         self.fields['nb_exemplaire'].label = "Nombre d'exemplaire"
         self.fields['date'].label = "Date"
-        self.fields['mot_cle'].label = "Mot(s) clé(s)"
+        self.fields['mot_cle'].label = "Mot-clé"
         self.fields['traducteur'].label = "Traducteur(s)"
         self.fields['langue_origine'].label = "Langue d'origine"
 
