@@ -28,6 +28,8 @@ class Auteur(models.Model):
     class Meta:
         db_table = 'auteurs'
 
+
+
 class Principal(models.Model):
     id = models.AutoField(primary_key=True)
 #    annee_1re_publication = models.IntegerField(max_length=4, choices=YEAR_CHOICES, default=datetime.datetime.now().year)
